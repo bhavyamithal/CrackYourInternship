@@ -42,7 +42,7 @@ public class RearrangeALinkedListInZigZagFashion {
 
         ListNode curr = head;
 
-        while (curr != null) {
+        while (curr.next != null) {
 
             if (flag) {
 
@@ -89,8 +89,11 @@ public class RearrangeALinkedListInZigZagFashion {
             int temp = curr.val;
             curr.val = next.val;
             next.val = temp;
-            curr = next;
-            next = next.next;
+            if (next.next == null || next.next.next == null) {
+                break;
+            }
+            curr = next.next;
+            next = next.next.next;
         }
 
         return head;
